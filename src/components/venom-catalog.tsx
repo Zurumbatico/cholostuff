@@ -519,7 +519,7 @@ export function VenomCatalog({ products }: VenomCatalogProps) {
       });
 
       if (submitError || !orderId) {
-        throw new Error("No se pudo crear el ticket.");
+        throw new Error(submitError?.message ?? "No se pudo crear el ticket.");
       }
 
       const { data: nextCart, error: nextCartError } = await supabase
@@ -529,7 +529,7 @@ export function VenomCatalog({ products }: VenomCatalogProps) {
         .single<CartSessionRow>();
 
       if (nextCartError || !nextCart) {
-        throw new Error("No se pudo reiniciar el carrito.");
+        throw new Error(nextCartError?.message ?? "No se pudo reiniciar el carrito.");
       }
 
       setCartId(nextCart.id);
@@ -540,8 +540,9 @@ export function VenomCatalog({ products }: VenomCatalogProps) {
       window.localStorage.setItem(CART_ID_STORAGE_KEY, nextCart.id);
       window.localStorage.setItem(CART_ITEMS_STORAGE_KEY, JSON.stringify([]));
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-    } catch {
-      setSubmitMessage("No se pudo crear el ticket. El carrito sigue disponible para reintentar.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "No se pudo crear el ticket.";
+      setSubmitMessage(`${message} El carrito sigue disponible para reintentar.`);
     } finally {
       setIsSubmittingOrder(false);
     }
