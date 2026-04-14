@@ -61,7 +61,7 @@ type InventoryRow = {
 const PAGE_SIZE = 12;
 const CART_ID_STORAGE_KEY = "cholostuff-cart-id";
 const CART_ITEMS_STORAGE_KEY = "cholostuff-cart-items";
-const WHATSAPP_PHONE = "51938219066";
+const WHATSAPP_PHONE = "51960203319";
 const RARITY_ORDER = [
   "Common",
   "Uncommon",
