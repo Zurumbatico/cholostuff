@@ -9,7 +9,7 @@ export type VenomProduct = {
 };
 
 const HCUNITS_VENOM_SOURCE =
-  "https://r.jina.ai/http://https://hcunits.net/sets/ve/";
+  "https://r.jina.ai/https://hcunits.net/sets/ve/";
 const HCUNITS_VENOM_URL = "https://hcunits.net/sets/ve/";
 export const VENOM_SET_ICON_URL = "https://storage.googleapis.com/static.hcunits.net/images/set/ve/icon.svg";
 
