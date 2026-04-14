@@ -101,6 +101,8 @@ create or replace function public.submit_cart_for_approval(
 )
 returns uuid
 language plpgsql
+security definer
+set search_path = public
 as $$
 declare
   v_order_id uuid;
@@ -174,6 +176,8 @@ begin
   return v_order_id;
 end;
 $$;
+
+grant execute on function public.submit_cart_for_approval(uuid, text, text, text) to anon, authenticated;
 
 create or replace function public.approve_order_request(p_order_id uuid)
 returns uuid

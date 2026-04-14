@@ -536,7 +536,7 @@ export function VenomCatalog({ products }: VenomCatalogProps) {
       setCartItems([]);
       setCustomerName("");
       setIsCartOpen(false);
-      setSubmitMessage(`Ticket ${orderId} creado en estado pendiente de aprobación.`);
+      setSubmitMessage(null);
       window.localStorage.setItem(CART_ID_STORAGE_KEY, nextCart.id);
       window.localStorage.setItem(CART_ITEMS_STORAGE_KEY, JSON.stringify([]));
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
@@ -896,6 +896,12 @@ export function VenomCatalog({ products }: VenomCatalogProps) {
 
         <div className="border-t border-border bg-card/70 px-5 py-4">
           <div className="mb-4 space-y-2">
+            <div className="rounded-2xl border border-primary/25 bg-primary/10 px-4 py-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Importante</p>
+              <p className="mt-1 text-sm leading-6 text-foreground">
+                Necesitas escribir tu nombre para poder crear el pedido y continuar por WhatsApp.
+              </p>
+            </div>
             <div className="space-y-2 pb-2">
               <p className="text-sm font-medium text-foreground">Tu nombre para agendar</p>
               <Input
@@ -940,7 +946,7 @@ export function VenomCatalog({ products }: VenomCatalogProps) {
             {isSubmittingOrder ? "Creando ticket..." : "Comprar por WhatsApp"}
           </Button>
           <p className="mt-2 text-xs leading-5 text-muted-foreground">
-            Al comprar se crea un ticket pendiente de aprobación y luego se abre WhatsApp con el detalle del pedido.
+            Al comprar se abre WhatsApp con el detalle de tu pedido para continuar la atención.
           </p>
         </div>
       </aside>

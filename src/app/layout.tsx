@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   title: "CholoStuff | HeroClix Venom – Figuras con precio en soles",
   description:
     "Figuras HeroClix Venom disponibles en Perú. Precios en soles, rareza verificada por pieza y stock actualizado. Encuentra desde commons hasta chase y compra directo.",
+  icons: {
+    icon: "/logo.webp",
+    shortcut: "/logo.webp",
+    apple: "/logo.webp",
+  },
 };
 
 export default function RootLayout({
