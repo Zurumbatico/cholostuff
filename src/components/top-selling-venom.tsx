@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
-import { formatPenPrice } from "@/lib/venom-pricing";
+import { formatPenPrice, getVenomPrice } from "@/lib/venom-pricing";
 
 type TopSellingRow = {
   approved_tickets: number;
@@ -105,7 +105,7 @@ export function TopSellingVenom() {
                     {item.product_code}
                   </Badge>
                 </div>
-                <CardDescription>{formatPenPrice(item.unit_price)}</CardDescription>
+                <CardDescription>{formatPenPrice(getVenomPrice(item.product_code) ?? item.unit_price)}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {item.image_url ? (
